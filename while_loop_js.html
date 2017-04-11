@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>While loop exercices</title>
+</head>
+<body>
+<script>
+    // This is how you get a random number between 50 and 100 cones to sell
+    'use strict';
+    var coneToSell = Math.floor(Math.random() * 50) + 50;
+    var cones = Math.floor(Math.random() * 5) + 1;
+
+    console.log("Cones to sell - coneToSell:  " + coneToSell);
+    while (cones <= coneToSell) {
+
+        //  console.log("To sell " + coneToSell);
+        //  console.log("Cones sold " + cones);
+        // coneToSell = coneToSell - cones;
+
+        console.log("coneToSell " + coneToSell)
+        console.log("Cones " + cones);
+        coneToSell = coneToSell - cones;
+        console.log("After the assigment " + coneToSell)
+        cones = Math.floor(Math.random() * 5) + 1;
+        if (coneToSell <= 0) {
+            console.log("Sell all the CONETOSELL " + coneToSell);
+            break;
+        }
+        if (cones > coneToSell) {
+            console.log("Need " + cones + " cones, I only have " + coneToSell);
+
+                while (cones != coneToSell) {
+                    cones = Math.floor(Math.random() * 5) + 1;
+                    console.log("looping: CONES "+ cones + " TO SELL: "+ coneToSell)
+        }
+        console.log("We're done, as all Sold");
+
+        }
+
+    }
+console.log("<= multiply by 2 =======>")
+    var startNumber = 2;
+    while (startNumber <= 65536) {
+        console.log("Ouput number: " + startNumber);
+        startNumber = startNumber * 2;
+    }
+</script>
+</body>
+</html>

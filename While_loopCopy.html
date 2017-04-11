@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>While loop exercices</title>
+</head>
+<body>
+<script>
+    // This is how you get a random number between 50 and 100 cones to sell
+    'use strict';
+    var coneToSell = Math.floor(Math.random() * 50) + 50;
+    var cones = Math.floor(Math.random() * 5) + 1;
+
+    console.log("Cones to sell:  " + coneToSell);
+    while (cones <= coneToSell) {
+
+        //  console.log("To sell " + coneToSell);
+        //  console.log("Cones sold " + cones);
+        // coneToSell = coneToSell - cones;
+        cones = Math.floor(Math.random() * 5) + 1;
+        console.log("Cones sold " + cones);
+        if (cones > coneToSell) {
+            console.log("Cannot sell " + cones + "cones I only have " + coneToSell);
+
+        } else {
+            coneToSell = coneToSell - cones;
+            console.log("Cones left to sell " + coneToSell )
+
+
+        }
+    }
+    console.log("<= multiply by 2 =======>")
+    var startNumber = 2;
+    while (startNumber <= 65536) {
+        console.log("Ouput number: " + startNumber);
+        startNumber = startNumber * 2;
+    }
+</script>
+</body>
+</htm

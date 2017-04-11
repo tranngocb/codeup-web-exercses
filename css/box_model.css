@@ -1,0 +1,46 @@
+
+.box {
+
+    width: 72px;
+    height: 72px;
+    padding: 10px;
+    margin: 25px;
+    border: 1px solid black;
+    float: left;
+
+}
+/*shorthand
+border: 1px solid black; */
+/*#box-blue {
+
+
+}*/
+#box-red {
+background-color: red;
+
+}
+
+
+#box-orange {
+    background-color: orange;
+
+}
+
+#box-yellow {
+    background-color: yellow;
+
+
+}
+#box-green {
+    background-color: green;
+    clear: left;
+
+}
+#box-blue {
+    background-color: red;
+
+}
+
+#box-purple {
+    background-color: purple;
+}
