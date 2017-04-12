@@ -27,12 +27,12 @@ sayHello(myNameIs);
 //console.log(helloMessage);
 // Don't modify the following line, it generates a random number between 1 and
 // 100 and stores it in a variable named random
-var random = Math.floor((Math.random()*100)+1);
+var random = Math.floor((Math.random()* 100) + 1);
 
 function isOdd(number) {
     var modNumber = number%2;
     console.log("Nuber passsed: " + number);
-    (modNumber == 1) ? console.log("it's a odd number.") : console.log("it's a even number.");
+    (modNumber) ? console.log("it's a odd number.") : console.log("it's a even number.");
 }
 
 isOdd(random);
