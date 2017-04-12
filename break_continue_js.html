@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Break and continue</title>
+</head>
+<body>
+<script>
+    'use strict';
+        var random = Math.floor((Math.random()*50)+1);
+        var evenNumber = random %2;
+    console.log("Random " + random);
+    console.log("evenNumber:  " + evenNumber);
+
+   while (evenNumber == 0) {
+       random = Math.floor((Math.random()*50)+1);
+       evenNumber = random %2;
+       console.log("Random " + random);
+       if (evenNumber == 1) {
+           console.log("Found it: " + evenNumber);
+       }
+
+        continue;
+
+        }
+    console.log("<=====except the random odd number you generated,==========")
+
+    var random = Math.floor((Math.random()*50)+1);
+    var modNmber = 0;
+    Console.log('Yikes: ' + random);
+
+    for (var i = 1; i < =50; i++) {
+
+        console.log('Loop counter is: ' + i);
+
+        modNumber = i%2;
+        if (modNumber = 0) {
+            console.log("Even number. skip");
+
+            break;
+        }
+
+        if (random == i) {
+
+            console.log('Yikes! Skipping number: ' + i);
+        } else {
+            console.log("Here is an odd number: " + i)
+
+            }
+            // use the break keyword to exit from the while loop
+            //break;
+
+            // nothing after the break will get processed
+            console.log('You will never see this line.');
+
+
+    }
+
+</script>
+</body>
+</html>
