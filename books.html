@@ -1,0 +1,75 @@
+/**
+ * Created by bichtran on 4/13/17.
+ */
+<!DOCTYPE html>
+<html>
+<head>
+<!-- HTML Codes by Quackit.com -->
+<title>My test site</title>
+</head>
+<script>
+"use strict";
+
+(function() {
+
+    var books = [
+        {
+            title: "Lord of the rings",
+            author: {
+                firstName: "J. R. R.",
+                lastName: "Tolkien"
+            }
+        },
+        {
+            title: "Make your bed",
+            author: {
+                firstName: "William H.",
+                lastName: "McRaven"
+            }
+        },
+        {
+            title: "The silent wife",
+            author: {
+                firstName: "Kerry",
+                lastName: "Fisher"
+            }
+
+
+        },
+        {
+            title: "Python, the crash course",
+            author: {
+                firstName: "Bich",
+                lastName: "Tran-Ngoc"
+            }
+        },
+        {
+            title: "The silent C++",
+            author: {
+                firstName: "Johny",
+                lastName: "Donotknow"
+            }
+        }
+
+    ]
+
+    console.log("the name of the book is" + books[0].title );
+    console.log("The author name of the second book is: " + books[2].author.lastName);
+
+    console.log(books);
+
+    books.forEach(function (element, index, array) {
+
+        console.log("Book #" + index);
+        console.log("Title: " + books[index].title);
+        console.log("Author: " + books[index].author.firstName + " " +books[index].author.lastName);
+    });
+
+})();
+</script>
+<body>
+<h1>Functions Exercices </h1>
+<p>Please be nice to me, I'm just start and need advice</p>
+
+</body>
+</html>

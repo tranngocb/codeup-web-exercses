@@ -41,12 +41,15 @@ console.log("Index of Earth " + earthIndex);
 // TODO: Read the console.log() statement above. Write code to perform the step it describes.
 
     console.log('Using splice to remove the planet after "Earth".');
-    planets.splice(earthIndex,1);
+    var planetRemoved = planets.splice(earthIndex+1,1);
+    var typeOfPlannetReoved = typeof planetRemoved;
+    // console.log('typeof ' + typeof planetRemoved);
+    console.log("Planet Removed" + planetRemoved + "  " + typeOfPlannetReoved);
 // TODO: Read the console.log() statement above. Write code to perform the step it describes.
 logPlanets();
 
 console.log('Using splice to add back the planet after "Earth".');
-    planets.splice(earthIndex,0, "Earth" );
+    planets.splice(earthIndex + 1, 0 , planetRemoved[0]);
 // TODO: Read the console.log() statement above. Write code to perform the step it describes.
 logPlanets();
 
