@@ -57,12 +57,12 @@
     console.log("The author name of the second book is: " + books[2].author.lastName);
 
     console.log(books);
+// need to change element parameter to book as singular
+    books.forEach(function (book, ind, array) {
 
-    books.forEach(function (element, index, array) {
-
-        console.log("Book #" + index);
-        console.log("Title: " + books[index].title);
-        console.log("Author: " + books[index].author.firstName + " " +books[index].author.lastName);
+        console.log("Book # " + ind);
+        console.log("Title: " + book[ind].title);
+        console.log("Author: " + book[ind].author.firstName + " " +book[ind].author.lastName);
     });
 
 })();

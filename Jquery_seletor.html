@@ -10,15 +10,16 @@
         <p id = "inP">The place holder</p>
     </div>
 <ol id="olist">
-    <li class="names">The first list item.</li>
-    <li class="names">The second list item.</li>
-    <li class="names">The third list item.</li>
+    <li class="codeup">The first list item.</li>
+    <li id = "codeup">The second list item.</li>
+   <!-- <li class="codeup">The second list item.</li> -->
+    <li class="codeup">The third list item.</li>
 </ol>
 
 <h1 id = "second-list">Second list</h1>
 
 <ul id="ulist">
-    <li class="names">The first list item.</li>
+    <li>The first list item.</li>
     <li class="names">The second list item.</li>
     <li class="names">The third list item.</li>
 </ul>
@@ -32,13 +33,8 @@
 
 <script>
 
-    var olistV = $('#olist').html();
-    alert(olistV);
-    var h1V = $("#inP").html();
-    alert(h1V);
-    var olistV = $('#olist').html();
-    alert(olistV);
-
+    // $('.codeup').css('border', '1px solid red');
+    $('.codeup').css('border', '1px solid red');
 </script>
 
 </body>
