@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 id = "first-list">Fist list</h1>
+    <div>
+        <p id = "inP">The place holder</p>
+    </div>
+<ol id="olist">
+    <li class="names">The first list item.</li>
+    <li class="names">The second list item.</li>
+    <li class="names">The third list item.</li>
+</ol>
+
+<h1 id = "second-list">Second list</h1>
+
+<ul id="ulist">
+    <li class="names">The first list item.</li>
+    <li class="names">The second list item.</li>
+    <li class="names">The third list item.</li>
+</ul>
+
+
+
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+
+<script>
+
+    var olistV = $('#olist').html();
+    alert(olistV);
+    var h1V = $("#inP").html();
+    alert(h1V);
+    var olistV = $('#olist').html();
+    alert(olistV);
+
+</script>
+
+</body>
+</html>
