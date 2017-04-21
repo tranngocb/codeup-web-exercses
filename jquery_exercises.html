@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 id = "first-list">Fist list</h1>
+<div>
+    <p id = "inP">The place holder</p>
+</div>
+<p id = "paragraphId">Use the file jquery_exercises.html for these exercises. Commit your changes to GitHub.
+
+    Remove your custom jQuery code from previous exercises.
+
+    Add jQuery code that will change the background color of a h1 element when clicked.
+
+    Make all paragraphs have a font size of 18px when they are double clicked.
+
+    Set all li text color to red when the mouse is hovering, reset to white when it is not. </p>
+<ol id="olist">
+    <li class="codeup">The first list item.</li>
+     <li class="codeup">The second list item.</li>
+    <li class="codeup">The third list item.</li>
+</ol>
+
+<h1 id = "second-list">Second list</h1>
+
+    <p>It is located right where you normally think of Backspace to be located. </p>
+<ul id="ulist">
+    <li class="codeup">The first list item.</li>
+    <li class="codeup">The second list item.</li>
+    <li class="codeup">The third list item.</li>
+</ul>
+
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+
+<script>
+    $('h1').click(function(e) {
+        $('h1').css('background-color', '#FF0');
+    });
+
+    $('#paragraphId').dblclick(function(e) {
+        $('p').css('font-size', '18px');
+    });
+
+    $('.codeup').hover(
+        function() {
+            $('li').css('color', 'red');//(this).css('color', 'red');
+        },
+        function() {
+            $('li').css('color', 'white');
+        }
+    );
+
+//Testing
+    $( "li" ).hover(function() {
+        $( this ).fadeOut( 100 );
+        $( this ).fadeIn( 500 );
+    });
+
+</script>
+
+</body>
+</html>
