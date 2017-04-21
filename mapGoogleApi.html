@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test for Google Ai</title>
+    <style type="text/css">
+        #map-canvas {
+            width: 700px;
+            height: 481px;
+            background-color: #2b542c;
+        }
+    </style>
+</head>
+<body>
+<h2>Where is  Codeup</h2>
+<div id="map-canvas"></div>
+<br>
+
+<label for="lat">Lat</label>
+<input type="text" id = "lat" value ="29.426791" >
+
+<label for="long">Long</label>
+<input type="text" id = "long" value ="-98.489602" >
+
+<label for="zoom">Zoom:</label>
+<input type="hidden" id = "zoom" value ="10" >
+
+<button id = "in">+</button>
+<button id = "out">-</button>
+
+
+<button id="update">Update map</button>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7fQ6x9UVfDn6TmZ2CscrE22ePwHfpL0s"></script>
+<script type = "text/javascript">
+
+    (function() {
+        "use strict";
+
+        // Set our map options
+        var mapOptions = {
+            // Set the zoom level
+            zoom: 9,
+            // This sets the center of the map at our location
+            center: {
+                lat:  29.426791,
+                lng: -98.489602
+            },
+           disableDefaultUI: true
+        };
+
+
+        // Render the map
+        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+        map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
+        // var marker = new google.maps.Marker({
+        // position: codeup
+        // map: map
+        // });
+
+        //infoWindow.open(map,marker);
+
+
+        //Add code
+        // Set our address to geocode
+        var address = "2464 Benrus blvd, San Antonio, TX";
+
+// Init geocoder object
+        var geocoder = new google.maps.Geocoder();
+
+// Geocode our address
+        geocoder.geocode({ "address": address }, function(results, status) {
+
+            // Check for a successful result
+            if (status == google.maps.GeocoderStatus.OK) {
+
+                // Recenter the map over the address
+                map.setCenter(results[0].geometry.location);
+                console.log(results[0].geometry.location);
+            } else {
+
+                // Show an error message with the status if our request fails
+                alert("Geocoding was not successful - STATUS: " + status);
+            }
+
+        })
+
+        //Add code ends
+        var zoomButt = document.getElementById("in");
+
+        function plusZoom() {
+           // console.log("in: " + zoomIn);
+            var zoomIn = mapOptions.zoom += 1;
+          //  console.log("After" + zoomIn);
+            map.setZoom(zoomIn);
+
+        }
+
+        zoomButt.addEventListener("click", plusZoom);
+
+        var zoomButtout = document.getElementById("out");
+
+        function minusZoom() {
+            var zoomOut = mapOptions.zoom -= 1;
+            map.setZoom(zoomOut);
+
+        }
+
+        zoomButtout.addEventListener("click", minusZoom);
+
+//  Update
+
+
+
+
+        var updateLatLong = document.getElementById("update");
+
+        //console.log("Lat-lng" + updateLatLong);
+
+        function latlngUpdate() {
+            var latValue = document.getElementById('lat').value;
+            var lngValue = document.getElementById('long').value;
+
+            console.log(parseFloat(latValue));
+            console.log(parseFloat(lngValue));
+
+            map.setCenter({lat: parseFloat(latValue), lng: parseFloat(lngValue)});
+
+        }
+        updateLatLong.addEventListener("click", latlngUpdate);
+
+    })();
+
+
+</script>
+
+</body>
+</html>

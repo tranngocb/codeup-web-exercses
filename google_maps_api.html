@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <title>Sample Map</title>
+    <style>
+    #map {
+    height:75%;
+    }
+    /* Optional: Makes the sample page fill the window. */
+    html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    }
+    </style>
+</head>
+<body>
+<h2>Welcome to my restaurants map!</h2>
+<div id="map"> </div> <br>
+<label for="zoom">Zoom:</label>
+<input type="hidden" id = "zoom" value ="10" >
+
+<button id = "in">+</button>
+<button id = "out">-</button>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7fQ6x9UVfDn6TmZ2CscrE22ePwHfpL0s"></script>
+<script type = "text/javascript">
+    var MarkerVLat; //= results[0].geometry.location.lat();
+    var MarkerVLng; // = results[0].geometry.location.lng();
+    var latV;
+    var lngV;
+    var mapOptions = {
+        // Set the zoom level
+        zoom: 17,
+        // This sets the center of the map at our location
+        center: {
+            lat:  29.426791,
+            lng: -98.489602
+        },
+        disableDefaultUI: true
+    };
+    // Render the map
+
+
+    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+// my Restaurant
+    var address = "1902 S Hackberry St, San Antonio, TX 78210";
+
+    var geocoder = new google.maps.Geocoder();
+    // Geocode our address
+    geocoder.geocode({ "address": address }, function(results, status) {
+
+        // Check for a successful result
+        if (status == google.maps.GeocoderStatus.OK) {
+
+            // Recenter the map over the address
+            map.setCenter(results[0].geometry.location);
+
+            //console.log(results[0].place_id);
+            console.log(results[0].geometry.location.lat(),results[0].geometry.location.lng());
+            MarkerVLat = results[0].geometry.location.lat();
+            MarkerVLng = results[0].geometry.location.lng();
+            Fmarker(MarkerVLat, MarkerVLng);
+        } else {
+
+            // Show an error message with the status if our request fails
+            alert("Geocoding was not successful - STATUS: " + status);
+        }
+
+    })
+    var zoomButt = document.getElementById("in");
+
+    function plusZoom() {
+        // console.log("in: " + zoomIn);
+        var zoomIn = mapOptions.zoom += 2;
+        //  console.log("After" + zoomIn);
+        map.setZoom(zoomIn);
+
+    }
+
+    zoomButt.addEventListener("click", plusZoom);
+
+    var zoomButtout = document.getElementById("out");
+
+    function minusZoom() {
+        var zoomOut = mapOptions.zoom -= 2;
+        map.setZoom(zoomOut);
+
+    }
+
+    zoomButtout.addEventListener("click", minusZoom);
+    // Marker for lattitude and longitude passes parameters, Restauarnt
+
+    // Create lat and long for our marker position
+    //MarkerVLat = results[0].geometry.location.lat();
+    //MarkerVLng = results[0].geometry.location.lng();
+   //console.log("MarkerVLat"+ " " +"MarkerVLng");
+    // var MarkerV = {lat: parseFloat(MarkerVLat), lng: parseFloat(MarkerVLng)}; // 29.5009789,-98.6276698
+    function Fmarker (latV, lngV){
+        var MarkerV = {lat: latV, lng: lngV};
+        // Add the marker to our existing map
+        var marker = new google.maps.Marker({
+            position: MarkerV,
+            map: map
+        });
+        var infowindow = new google.maps.InfoWindow({
+            content:  "<b>Best resto in town! Yoooooppi </b>"
+
+        })   // Open the window using our map and marker
+            infowindow.open(map, marker);
+    };
+
+   // Fmarker();
+
+</script>
+
+</body>
+</html>
