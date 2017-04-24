@@ -7,7 +7,9 @@
 <body>
     <h1 id = "first-list">Fist list</h1>
         <div>
-            <p id = "inP">The place holder</p>
+            <p id = "inP">TThe text-decoration CSS property is used to set the text formatting to underline,<br>
+                overline or line-through. Underline and overline decorations are positioned under the text,<br>
+                line-through over it.</p>
         </div>
     <ol id="olist">
         <li class="codeup">The first list item.</li>
@@ -29,11 +31,10 @@
 
     <script>
 
-//        set the font-size of all li elements to 20px.
-        $('li').css('font-size', '20px');
-//        Craft selectors that highlight all the h1, p, and li elements.
-        $('h1, p, li').css('text-decoration', 'underline blue');
-        $('p').css('color', "violet");
+//        Combine your selectors that highlight all the h1, p, and li elements.
+        $('h1, p, li').css('text-decoration', 'underline');
+        var contents = $('#inP').html();
+        alert(contents);
     </script>
 
 </body>

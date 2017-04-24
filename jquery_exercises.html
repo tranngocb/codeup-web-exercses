@@ -39,11 +39,15 @@
 
 
 <script>
-    $('h1').click(function(e) {
+    $(document).ready(function () {
+
+
+
+    $('h1').click(function() {
         $('h1').css('background-color', '#FF0');
     });
 
-    $('#paragraphId').dblclick(function(e) {
+    $('#paragraphId').dblclick(function() {
         $('p').css('font-size', '18px');
     });
 
@@ -53,9 +57,9 @@
         },
         function() {
             $('li').css('color', 'white');
-        }
+        };
     );
-
+    });
 //Testing
     $( "li" ).hover(function() {
         $( this ).fadeOut( 100 );

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Konami Code</title>
+    <style>
+
+        #h1Id {
+                color: #985f0d;
+                font-family: fantasy;
+        }
+        #demo {
+            color: mediumslateblue;
+            font-size: 2em;
+
+        }
+        p {
+            height: 1cm;
+            width: 7cm;
+            border-style: solid;
+            border-color: #ff0000 #0000ff;
+            background-color: #5bc0de;
+
+        }
+
+
+    </style>
+
+
+
+</head>
+<body>
+<h1 id = "h1Id">Konami Code</h1>
+
+<button onclick="myFunction()">Show Konami Code</button>
+
+<p id="demo"></p>
+
+
+
+<!--<script src="/js/jquery.js"></script>-->
+<script>
+    "use strict";
+
+
+    function myFunction() {
+//        var cheatCode = String.fromCharCode(38, 38, 40, 40, 37, 39, 37,39 ,66, 65);
+//        var cheatCode =  "&rarr;";
+        var cheatCode = ('&uarr;' + '&uarr;' + '&darr;' + '&darr;' +'&larr;' + '&rarr;' +'&larr;' + '&rarr;' + 'B' + 'A');
+       // console.log(cheatCode);
+        document.getElementById("demo").innerHTML = cheatCode;
+    }
+
+//    var str = "HELLO WORLD";
+  //  var n = str.charCodeAt(0);
+
+    //        console.log(event.keyCode);
+//    });
+
+//    var konamiSt = "38, 38, 40, 40, 37, 39, 37,39 ,66, 65";
+//    var konamiA = konamiSt.split(',');
+//    alert("Starting the sequence");
+//    konamiA.forEach(ShowResults);
+//    function ShowResults(value, index, ar) {
+//        document.write(konamiSt.charCodeAt(index));
+//        document.write("value: " + value);
+//        document.write(" index: " + index);
+//
+//        document.write("<br />");
+//  }
+
+
+
+
+    alert("Starting the sequence");
+
+    if ( window.addEventListener ) {
+        var konamiKeys = [], konami = "38,38,40,40,37,39,37,39,66,65";
+//        console.log("We are here")
+        window.addEventListener("keydown", function(myEvent){
+            konamiKeys.push( myEvent.which );
+            console.log(myEvent.which);
+            console.log(konamiKeys.toString().indexOf( konami ));
+            if ( konamiKeys.toString().indexOf( konami ) >= 0 ) {
+
+                window.open('http://www.trythisforexample.com/');
+                // User entered Konami Code, do something cool!!!
+                konamiKeys = [];
+            } }, true);
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+</body>
+</html>
