@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+
+    $("button").click(function () {
+        event.preventDefault();
+
+        $(".invisible").toggleClass("noSee");
+
+    });
+
+    $("dt").click(function () {
+
+        $('dt').addClass('highlighted');
+    });
+
+//      second exercise
+    $("#button2").click(function (e) {
+        $("ul").each(function (e) {
+//            alert("voila: " +e);
+            $(this).children(e).last().css({"background": "yellow"}); //,"color": "red", "border": "2px solid red"});
+        })
+    });
+
+//  When any h3 is clicked, the lis underneath it should be bolded.
+    //hidding for now
+
+//    $("h3").click(function () {
+//        alert("voila, in h3: ");
+//        $(this).next().css("font-weight", "bold")
+//    });
+//    When any list item is clicked, first li of the parent ul should have a font color of blue.
+
+    $("li").click(function () {
+      //  alert("voila, in li: ");
+        $(this).parent().children().first().css("font-weight", "bold")
+    });
+//  === when you click the x, hde the entire div
+    $("span").click(function () {
+      //  alert("voila, in SPAN: ");
+        $("#divToHide").hide()
+    });
+//    The uls next to each h3 that contain facts about each park should start out hidden,
+// and when the corresponding h3 is clicked, the display of the ul should be toggled with a sliding effect.
+
+    $("h3").click(function () {
+       // alert("voila, in h3 with lidin effect: ");
+        $(this).next().slideToggle();
+
+    });
+//    After the user has been on the page for 8 seconds, an h2 should fade in that asks the user to register for the site.
+
+    $( "h2" ).fadeOut( 8000, function() {
+        var person = prompt("Would you like to register", "Visitor");
+        if (person != null) {
+            document.getElementById("demo").innerHTML =
+                "Hello " + person + "! How are you today?";
+        }
+    });
+
+
+//    DO NOT CROSS
+});
+
+
+
+
+
+</script>
+<style>
+
+
+h1, h2 {
+	color: #a94442;
+}
+div { width: 70%;
+	background: #acac9d; }
+
+dd {
+    margin-left: 25px;
+	height: 30px;
+	width:80%;
+	background:#BBB
+}
+button{
+    font-family: fantasy;
+    font-size: medium;
+    background-color: yellow;
+}
+.noSee {
+
+  /*visibility: hidden;*/
+    display: none;
+}
+.highlighted {
+  text-decoration: underline;
+  background-color: #FF0;
+}
+
+}
+.invisible {
+  display: table;
+            }
+body {
+  background-image: url("AppYELL.jpg");
+  <!--background-color: #cccccc; -->
+}
+
+</style>
+</head>
+<body>
+<div>
+    <h1 id="divToHide">Would you like to sign up for our <span>x</span> newsletter</h1>
+    <p id="demo"></p>
+</div>
+<h1 id="natPark">National Park Service </h1>  <br>
+<h2>Discover America's Story: The National Parks</h2> <br>
+<h2> Frequently Asked Questions</h2>
+
+<div>
+<dl>
+  <dt>Is Yellowstone the largest national park?</dt>
+  <dd class="invisible" >No. More than half of Alaska s national park units are larger, including Wrangell St</dd> <br>
+  <dt>Is Yellowstone the most visited national park?</dt>
+  <dd class= "invisible">Yellowstone is in the top five national parks for number of recreational visitors.</dd> <br>
+  <dt>What is the difference between a national park and a national forest?</dt>
+  <dd class= "invisible">National parks are administered by the Department of the Interior and national forests by the Department of Agriculture.</dd><br>
+  <dt>How many rangers work in Yellowstone?</dt>
+  <dd class= "invisible">Approximately 773 people work for the National Park Service during the peak summer season</dd><br>
+  <dt>How do you become a park ranger?</dt>
+  <dd class= "invisible">Many National Park Service employees begin their careers as volunteers or as seasonal employees.</dd><br>
+</dl>
+
+</div>
+<button type="button" >Please, click to TOGGLE details</button>
+<div>
+    <!--Add 3 unordered lists-->
+    <h3 id="national-parks-heading">National Parks</h3>
+    <ul class = "noSee" id="national-parks">
+        <li>Arches</li>
+        <li>Badlands</li>
+        <li>Carlsbad Caverns</li>
+        <li>Denali</li>
+
+    </ul>
+    <h3>State Parks of Texas</h3>
+    <ul class = "noSee" id="state-parks-texas">
+        <li>Abilene</li>
+        <li>Big Bend</li>
+        <li>Choke Canyon</li>
+        <li>Davis Mountains</li>
+
+    </ul>
+
+    <h3>Yellowstone National Park</h3>
+    <ul class = "noSee" id="yellowStone">
+        <li>Yellowstone is bigger than two U.S. states.</li>
+        <li>A veteran of the Lewis and Clark expedition</li>
+        <li>One of Yellowstone’s earliest explorers was stranded </li>
+        <li>The park sits atop the largest supervolcano in North America.</li>
+    </ul>
+
+
+</div>
+<button id = button2 type="button" >Changing the li background</button>
+
+</body>
+</html>
