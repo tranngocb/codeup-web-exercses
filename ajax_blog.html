@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax Blog</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<style>
+p { font-size: 1em
+
+
+}
+</style>
+<body>
+
+<h1> Need to post info here </h1>
+<div id = post>
+
+
+</div>
+<button>Send an HTTP GET request to a page and get the result back</button>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+    (function() {
+        "use strict";
+        // TODO: Create an ajax POST request for /data/Blog.json
+        $.ajax({
+
+            "url": "data/blog.json",
+            "type": "POST",
+            "data": {
+                "limit":  10,
+                "offset": 20
+
+            }
+        }).done(function(data,status) {
+            // do something with the data
+            console.log(data[0]);
+
+            for (var i = 0; i < data.length; i = i+1) {
+                $("#post").append("<p>"+data[i].title + "</p>>" + "<p>" +data[i].content + "</p>>" + "<p>"+ data[i].categories + "</p>" +
+                    "<p>"+ data[i].date + "</p>");
+            }
+
+        })
+            .fail(function(jqXhr, status, error) {
+                alert("There was an error! Check the console for details");
+                console.log("Response status: " + status);
+                console.log("Error object: " + error);
+                // TODO: Take the data from inventory.json and append it to the products table
+
+            });
+
+
+    $("button").click(function () {
+        
+
+//        $.post("data/blog.json", {
+//         "title": "The firstPost",
+//            "content": "Cupcake ipsum dolor sit amet gummies.",
+//            "categories": [
+//            "family",
+//            "candy",
+//            "sweets",
+//            "sugar"
+//        ],
+//            "date": "February 14, 2015"
+
+//        }
+
+//        ).done(function(data) {
+//            // do something with the response
+//            console.log(data[0]);
+//        }).fail(function(jqXhr, status, error) {
+//            alert("There was an error! Check the console for details");
+//            console.log("Response status: " + status);
+//            console.log("Error object: " + error);
+//           TODO: Take the data from inventory.json and append it to the products table
+
+//        });
+    })
+
+        // Do not cross
+    })();
+    </script>
+
+
+</body>
+</html>
