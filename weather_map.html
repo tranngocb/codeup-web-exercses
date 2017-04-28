@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type = "text/javascript"></script>
+    <title>OpenWeather Map API</title>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXh1nDbknK1u4EfqaassiWl2L_Ca0C6lg"></script>
+            <style>
+            .container-fluid {
+                background-color: #5bc0de;
+            }
+            div {
+                text-align:center;
+
+
+            }
+            #mapCanvas {
+                width: 100%;
+                height: 481px;
+                border-color: #0000cc;
+            }
+            </style>
+</head>
+<body>
+        <div class="container-fluid">
+            <h1>Weather Application!</h1>
+            <h2>San Antonio</h2>
+            <p>Resize the browser window to see the effect.</p>
+            <div class="row">
+
+                <div id = col0 class="col-xs-6 col-sm-4" style="background-color:lavender;">..</div>
+                <div id = col1 class="col-sm-4" style="background-color:lavenderblush;">.col-sm-4<br>
+                    </div>
+                <div id = col2 class="col-sm-4" style="background-color:lavender;">.col-sm-4</div>
+            </div>
+            <h3>Drag the marker to see the temperature</h3>
+            <div align="center" id="mapCanvas"> </div>
+            <button id = "in">+</button>
+            <button id = "out">-</button>
+            Lat: <input type="text" id="latId"><br>
+            Lng: <input type="text" id="lngId">
+        </div>
+
+</body>
+
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>-->
+
+<script>
+    (function() {
+        "use strict";
+
+        // TODO: Create an ajax GET request for /WeatherMap API
+
+
+        function getWeather(latitudeV, longitudeV) {
+
+
+
+        $.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
+            APPID: "36090fa1a7a5ce7bca24b1f4f6b4ad25",
+            // id: 524901,
+            cnt: 3,
+            lat: latitudeV,     //29.423017,
+            lon: longitudeV,    //-98.48527,
+            units: "imperial",
+            //q: "San Antonio"
+        }).done(function (data) {
+            //need to change "data.forEach(
+            for (var i = 0; i < 3; i++) {
+                console.log(data);
+                var TempInFarMax = data.list[i].temp.max;
+                var TempInFarMin = data.list[i].temp.min;
+                var Deg = "&#176;";
+//
+                var Icon = '<img src = "http://openweathermap.org/img/w/' + data.list[i].weather[0].icon + '.png">';
+                var Wind = data.list[i].speed;
+                var Clouds = data.list[i].weather[0].description;  //data.clouds.all;
+                var Humidity = data.list[i].humidity;
+                var Pressure = data.list[i].pressure;
+                switch (i) {
+                    case 0:
+                        $("#col0").html(TempInFarMax + Deg + "/" + TempInFarMin + Deg + "<br>" + Icon + "<br>" +
+                            "Clouds: " + Clouds + "<br>" + "Humidity: " + Humidity + "<br>" + "Wind: " + Wind + "<br>" + "Pressure: " + Pressure);
+                        break;
+                    case 1:
+                        $("#col1").html(TempInFarMax + Deg + "/" + TempInFarMin + Deg + "<br>" + Icon + "<br>" +
+                            "Clouds: " + Clouds + "<br>" + "Humidity: " + Humidity + "<br>" + "Wind: " + Wind + "<br>" + "Pressure: " + Pressure);
+                        break;
+                    case 2:
+                        $("#col2").html(TempInFarMax + Deg + "/" + TempInFarMin + Deg + "<br>" + Icon + "<br>" +
+                            "Clouds: " + Clouds + "<br>" + "Humidity: " + Humidity + "<br>" + "Wind: " + Wind + "<br>" + "Pressure: " + Pressure);
+                        break
+                    default:
+                        Alert("Done");
+                }
+//                $("#col").html(TempInFarMax + Deg + "/" + TempInFarMin + Deg + "<br>" + Icon + "<br>" +
+//                    "Clouds: " + Clouds + "<br>" + "Humidity: " + Humidity + "<br>" + "Wind: " + Wind + "<br>" + "Pressure: " + Pressure);
+
+
+            }
+        });
+    }; // end of function getWeather()
+       // Calling
+        getWeather(29.423017,-98.48527);
+        //Place the map for now
+
+        var MarkerVLat; //= results[0].geometry.location.lat();
+        var MarkerVLng; // = results[0].geometry.location.lng();
+        var latV;
+        var lngV;
+        var mapOptions = {
+            // Set the zoom level
+            zoom: 2,
+            // This sets the center of the map at our location
+            center: {
+                lat:  29.426791,
+                lng: -98.489602
+            },
+            disableDefaultUI: true
+        };
+        // Render the map
+
+
+        var map = new google.maps.Map(document.getElementById("mapCanvas"), mapOptions);
+// my Restaurant
+        var address = "1902 S Hackberry St, San Antonio, TX 78210";
+
+        var geocoder = new google.maps.Geocoder();
+        // Geocode our address
+        geocoder.geocode({ "address": address }, function(results, status) {
+
+            // Check for a successful result
+            if (status == google.maps.GeocoderStatus.OK) {
+
+                // Recenter the map over the address
+                map.setCenter(results[0].geometry.location);
+
+                console.log(results[0].geometry.location.lat(),results[0].geometry.location.lng());
+                MarkerVLat = results[0].geometry.location.lat();
+                MarkerVLng = results[0].geometry.location.lng();
+                Fmarker(MarkerVLat, MarkerVLng);
+            } else {
+
+                // Show an error message with the status if our request fails
+                alert("Geocoding was not successful - STATUS: " + status);
+            }
+
+        })
+        var zoomButt = document.getElementById("in");
+
+        function plusZoom() {
+            // console.log("in: " + zoomIn);
+            var zoomIn = mapOptions.zoom += 2;
+            //  console.log("After" + zoomIn);
+            map.setZoom(zoomIn);
+
+        }
+
+        zoomButt.addEventListener("click", plusZoom);
+
+        var zoomButtout = document.getElementById("out");
+
+        function minusZoom() {
+            var zoomOut = mapOptions.zoom -= 2;
+            map.setZoom(zoomOut);
+
+        }
+
+        zoomButtout.addEventListener("click", minusZoom);
+        // Marker for lattitude and longitude passes parameters, Restauarnt
+
+        function Fmarker (latV, lngV){
+            var MarkerV = {lat: latV, lng: lngV};
+            // Add the marker to our existing map
+            var marker = new google.maps.Marker({
+                position: MarkerV,
+                draggable: true,
+                animation: google.maps.Animation.DROP,
+                map: map
+            });
+            var infowindow = new google.maps.InfoWindow({
+                content: "Forecast Temperature Around the wolrd",    //Long:" + lngV + "latV" + latV,
+
+            });  // Open the window using our map and marke;
+            infowindow.open(map, marker);
+      //  }
+        google.maps.event.addListener(
+            marker,
+            'drag',
+            function(event) {
+                document.getElementById('latId').value = this.position.lat();
+                document.getElementById('lngId').value = this.position.lng();
+
+            //alert('drag');
+            });
+
+
+        google.maps.event.addListener(marker,'dragend',function(event) {
+            document.getElementById('latId').value = this.position.lat();
+            document.getElementById('lngId').value = this.position.lng();
+            latV=this.position.lat();
+            lngV = this.position.lng();
+            getWeather(latV,lngV);
+            alert('Drag end');
+        });
+
+        }
+        // Do not cross
+    })();
+</script>
+
+</html>

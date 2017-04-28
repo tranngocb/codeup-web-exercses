@@ -33,7 +33,7 @@
     var lngV;
     var mapOptions = {
         // Set the zoom level
-        zoom: 17,
+        zoom: 12,
         // This sets the center of the map at our location
         center: {
             lat:  29.426791,
@@ -59,7 +59,7 @@
             map.setCenter(results[0].geometry.location);
 
             //console.log(results[0].place_id);
-            console.log(results[0].geometry.location.lat(),results[0].geometry.location.lng());
+            //console.log(results[0].geometry.location.lat(),results[0].geometry.location.lng());
             MarkerVLat = results[0].geometry.location.lat();
             MarkerVLng = results[0].geometry.location.lng();
             Fmarker(MarkerVLat, MarkerVLng);
@@ -112,7 +112,7 @@
             infowindow.open(map, marker);
     };
 
-   // Fmarker();
+    Fmarker();
 
 </script>
 
